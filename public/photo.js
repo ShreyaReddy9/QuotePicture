@@ -1,3 +1,4 @@
+// Attach flipping logic to all existing cards
 document.querySelectorAll('.card').forEach(card => {
   attachFlipListeners(card);
 });
@@ -45,7 +46,7 @@ function addNewCard() {
   formData.append('image', fileInput.files[0]);
   formData.append('memory', memoryText);
 
-  fetch('http://localhost:5000/upload', {
+  fetch('/upload', {  // ✅ relative path (works on Render)
     method: 'POST',
     body: formData,
   })
@@ -72,7 +73,7 @@ function addNewCard() {
     `;
 
     gallery.appendChild(newCard);
-    attachFlipListeners(newCard); // ✅ NEW: Attach flipping behavior to new card
+    attachFlipListeners(newCard); // ✅ attach flip behavior to new card
   });
 }
 
@@ -105,8 +106,9 @@ function attachFlipListeners(card) {
   });
 }
 
+// Load existing images and render them on page load
 window.addEventListener('DOMContentLoaded', () => {
-  fetch('http://localhost:5000/images')
+  fetch('/images')  // ✅ relative path (works on Render)
     .then(res => res.json())
     .then(images => {
       const gallery = document.querySelector('.gallery');
