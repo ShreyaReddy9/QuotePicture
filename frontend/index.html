@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+       Photo Booth
+    </title>
+    <link rel="stylesheet" href="photos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Leckerli+One&display=swap" rel="stylesheet">
+    
+</head>
+<body > 
+    <h1 id="title">Quote a Picture</h1>
+    <h2 class="gradient-text"> By Shreya Reddy G</h2>
+    <h4> - Click on image for a message</h4>
+    <div class="gallery">
+        <div class="card" data-id="memory1" >
+            <div class="card-inner">
+              <div class="card-front">
+                <img src="uploads/IMG_2522.jpeg" alt="Memory 1">
+              </div>
+              <div class="card-back">
+                <h3>Memory Date: July 4, 2021</h3>
+                <p class="memory-quote" onclick="enableEdit(this)"></p> <!-- Empty initially -->
+                <input type="text" placeholder="Type your memory..." class="memory-input">
+                <button onclick="saveMemory(event, this)">Save</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-id="memory2" >
+            <div class="card-inner">
+              <div class="card-front">
+                <img src="uploads/IMG_3119.jpeg" alt="Memory 1">
+              </div>
+              <div class="card-back">
+                <h3>Memory Date: July 5, 2021</h3>
+                <p class="memory-quote" onclick="enableEdit(this)"></p> <!-- Empty initially -->
+                <input type="text" placeholder="Type your memory..." class="memory-input">
+                <button onclick="saveMemory(event, this)">Save</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-id="memory3" >
+            <div class="card-inner">
+              <div class="card-front">
+                <img src="uploads/IMG_3139.jpeg" alt="Memory 1">
+              </div>
+              <div class="card-back">
+                <h3>Memory Date: July 5, 2021</h3>
+                <p class="memory-quote" onclick="enableEdit(this)"></p> 
+                <input type="text" placeholder="Type your memory..." class="memory-input">
+                <button onclick="saveMemory(event, this)">Save</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-id="memory4" >
+            <div class="card-inner">
+              <div class="card-front">
+                <img src="uploads/IMG_3278.jpeg" alt="Memory 1">
+              </div>
+              <div class="card-back">
+                <h3>Memory Date: July 5, 2021</h3>
+                <p class="memory-quote" onclick="enableEdit(this)"></p> 
+                <input type="text" placeholder="Type your memory..." class="memory-input">
+                <button onclick="saveMemory(event, this)">Save</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-id="memory5" >
+            <div class="card-inner">
+              <div class="card-front">
+                <img src="uploads/IMG_3312.jpeg" alt="Memory 1">
+              </div>
+              <div class="card-back">
+                <h3>Memory Date: July 5, 2021</h3>
+                <p class="memory-quote" onclick="enableEdit(this)"></p> 
+                <input type="text" placeholder="Type your memory..." class="memory-input">
+                <button onclick="saveMemory(event, this)">Save</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-id="memory5" >
+            <div class="card-inner">
+              <div class="card-front">
+                <img src="uploads/IMG_3790.jpeg" alt="Memory 1">
+              </div>
+              <div class="card-back">
+                <h3>Memory Date: July 5, 2021</h3>
+                <p class="memory-quote" onclick="enableEdit(this)"></p> 
+                <input type="text" placeholder="Type your memory..." class="memory-input">
+                <button onclick="saveMemory(event, this)">Save</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-id="memory6" >
+            <div class="card-inner">
+              <div class="card-front">
+                <img src="uploads/IMG_4169.jpeg" alt="Memory 1">
+              </div>
+              <div class="card-back">
+                <h3>Memory Date: July 5, 2021</h3>
+                <p class="memory-quote" onclick="enableEdit(this)"></p> 
+                <input type="text" placeholder="Type your memory..." class="memory-input">
+                <button onclick="saveMemory(event, this)">Save</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-id="memory7" >
+            <div class="card-inner">
+              <div class="card-front">
+                <img src="uploads/IMG_4327.jpeg" alt="Memory 1">
+              </div>
+              <div class="card-back">
+                <h3>Memory Date: July 5, 2021</h3>
+                <p class="memory-quote" onclick="enableEdit(this)"></p> 
+                <input type="text" placeholder="Type your memory..." class="memory-input">
+                <button onclick="saveMemory(event, this)">Save</button>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-id="memory8" >
+            <div class="card-inner">
+              <div class="card-front">
+                <img src="uploads/IMG_4346.jpeg" alt="Memory 1">
+              </div>
+              <div class="card-back">
+                <h3>Memory Date: July 5, 2021</h3>
+                <p class="memory-quote" onclick="enableEdit(this)"></p> 
+                <input type="text" placeholder="Type your memory..." class="memory-input">
+                <button onclick="saveMemory(event, this)">Save</button>
+              </div>
+            </div>
+          </div>
+          
+    </div>
+    <footer>
+      <div class="uploader">
+        <input type="file" id="imageUpload" accept="image/*">
+        <input type="text" id="memoryText" placeholder="Type your memory...">
+        <button onclick="addNewCard()">Add Photo</button>
+      </div>
+    </footer>
+    <script src="photo.js" defer></script>
+</body>
+</html>
