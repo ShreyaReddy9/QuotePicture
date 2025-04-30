@@ -9,7 +9,7 @@ const app = express();
 const path = require('path');
 const multer = require('multer');
 const cors = require('cors');
-const fs = require('fs');
+
 
 // Environment-aware port
 const PORT = process.env.PORT || 5000;
