@@ -34,4 +34,18 @@ app.post('/upload', upload.single('image'), (req, res) => {
 // List uploaded images
 app.get('/images', (req, res) => {
   fs.readdir(path.join(__dirname, 'uploads'), (err, files) => {
-    if (
+    if (err) return res.status(500).json({ error: 'Failed to load images' });
+
+    const imageList = files.map(file => ({
+      imageUrl: `/uploads/${file}`,
+      memory: ""  // Can be extended later to pull memory from storage
+    }));
+
+    res.json(imageList);
+  });
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`✅ Server running at http://localhost:${PORT}/`);
+});
