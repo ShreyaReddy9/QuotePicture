@@ -1,3 +1,9 @@
+const fs = require('fs');
+const uploadsDir = path.join(__dirname, 'uploads');
+
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir);
+}
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -10,6 +16,8 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 
 // Serve static frontend files
 app.use(express.static(path.join(__dirname, 'public')));
