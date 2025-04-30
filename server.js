@@ -1,33 +1,32 @@
-const fs = require('fs');
-const uploadsDir = path.join(__dirname, 'uploads');
-
-if (!fs.existsSync(uploadsDir)) {
-  fs.mkdirSync(uploadsDir);
-}
 const express = require('express');
 const app = express();
-const path = require('path');
+const path = require('path'); // ✅ moved this up
+const fs = require('fs');
 const multer = require('multer');
 const cors = require('cors');
-
 
 // Environment-aware port
 const PORT = process.env.PORT || 5000;
 
+// Create uploads folder if it doesn't exist
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir);
+}
+
+// Middleware
 app.use(cors());
 app.use(express.json());
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
-
-// Serve static frontend files
-app.use(express.static(path.join(__dirname, 'public')));
 
 // Serve uploaded images
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static(uploadsDir));
+
+// Serve frontend files from public folder
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Multer config for file uploads
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, 'uploads/'),
+  destination: (req, file, cb) => cb(null, uploadsDir),
   filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))
 });
 const upload = multer({ storage });
@@ -41,12 +40,12 @@ app.post('/upload', upload.single('image'), (req, res) => {
 
 // List uploaded images
 app.get('/images', (req, res) => {
-  fs.readdir(path.join(__dirname, 'uploads'), (err, files) => {
+  fs.readdir(uploadsDir, (err, files) => {
     if (err) return res.status(500).json({ error: 'Failed to load images' });
 
     const imageList = files.map(file => ({
       imageUrl: `/uploads/${file}`,
-      memory: ""  // Can be extended later to pull memory from storage
+      memory: ""
     }));
 
     res.json(imageList);
